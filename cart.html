@@ -4,28 +4,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <title>KimOanh Mobile</title>
+    <meta name="author" content="Kim Oanh Dau">
+    <title>
+		KimOanh Mobile
+	</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+    <link href="css/phonePhoto.css" rel="stylesheet">
+
+	<link href="css/style.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
+	$('a.login-window').click(function() {
+		
+		// Getting the variable's value from a link 
+		var loginBox = $(this).attr('href');
+
+		//Fade in the Popup and add close button
+		$(loginBox).fadeIn(300);
+		
+		//Set the center alignment padding + border
+		var popMargTop = ($(loginBox).height() + 24) / 2; 
+		var popMargLeft = ($(loginBox).width() + 24) / 2; 
+		
+		$(loginBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>');
+		$('#mask').fadeIn(300);
+		
+		return false;
+	});
+	
+	$('a.close, #mask').on('click', function() { 
+	  $('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+});
+</script>
+	
+</head>
 
 <body>
-		<header id="header">
+	<header id="header">
 		<div class="header_top">
 			<div class="container">
 				<div class="row">
@@ -39,9 +67,12 @@
 						</div>
 					</div>
 					<div class="col-sm-4" >
+						<form>
 						<div class="search_box">
 							<input style="background-color:white;" type="text" placeholder="Search"/>
+							<button class="btn btn-danger" type="submit"><b class="fa fa-search"></b></button>
 						</div>
+						</form>
 					</div>
 					<div class="col-sm-4" >
 						<div class="social-icons pull-right">
@@ -56,48 +87,88 @@
 			</div>
 		</div>
 		
-		<div class="header-middle"><!--header-middle-->
+		<div class="header-middle">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
-						<div class="nav navbar-nav">
-							<a href="index.html"><img src="images/home/logo.png" alt="" style="width:80px;" /></a>
-							<li><h3>KimOanh</h3></li>
+						<div class="logo pull-left">
+							<ul class="nav navbar-nav">
+								<a href="index.html"><img src="images/home/logo.png" alt="" style="width:80px;" /></a>
+								<li><h3>KimOanh</h3></li>
+							</ul>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
-								<li><a href="signup.html"><i class="fa fa-lock"></i> Sign up</a></li>
-								<li><a href="checkout.html"><i class="fa fa-check"></i> Checkout</a></li>
+								<li><a href="#login-box" class="login-window"><i class="fa fa-user"></i> Login</a></li>
+								<li><a href="#signup-box" class="login-window"><i class="fa fa-lock"></i> Sign up</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="about-us.html"><i class="fa fa-group"></i> About us</a></li>
 								<li><a href="contact-us.html"><i class="fa fa-phone"></i> Contact</a></li>
+								<li><a href="Tutorial.html"><i class="fa fa-book"></i>Tutorial</a></li>
 							</ul>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
+				<!-- ------------------------------------------------------- -->
+					<div id="login-box" class="login-popup">
+						<a href="#" class="close"><img src="images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+						<form method="post" class="signin" action="#">
+							<fieldset class="textbox">
+								<label class="username">
+									<span>Username or email</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+                
+								<label class="password">
+									<span>Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+                
+								<button class="btn btn-danger" type="submit">Sign in</button>
+								<p>You don't have account.<a href="#signup-box" class="login-window">Sign up here</p>
+								<p><a class="forgot" href="#">Forgot your password?</a></p>
+                
+							</fieldset>
+						</form>
 					</div>
+					<!-- -------------------------------------------------------- -->
+					
+					<div id="signup-box" class="login-popup">
+						<a href="#" class="close"><img src="images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+						<form method="post" class="signin" action="#">
+							<fieldset class="textbox">
+								<label class="username">
+									<span>Username</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+								
+								<label class="username">
+									<span>Email</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+                
+								<label class="password">
+									<span>Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+								
+								<label class="password">
+									<span>Re-Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+                
+								<button class="btn btn-danger" type="submit">Sign up</button>
+                							               
+							</fieldset>
+						</form>
+					</div>
+					
+					<!-- -------------------------------------------------------- -->
 				</div>
 			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
-
+		</div>
+	</header>
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -193,7 +264,7 @@
 					<tbody>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
+								<a href=""><img src="images/Iphone/iphone-7-9-300x300.jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">	Iphone 7 plus</a></h4>
@@ -217,7 +288,7 @@
 
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
+								<a href=""><img src="images/Samsung/samsung-galaxy-note-5-14-300x300.jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">Samsung-galaxy-j7</a></h4>
@@ -240,7 +311,7 @@
 						</tr>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
+								<a href=""><img src="images/Samsung/samsung-galaxy-s7-edge-pink-gold-edition-pp-300x300.jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">samsung-galaxy-s7-edge</a></h4>
@@ -267,7 +338,7 @@
 								<table class="table table-condensed total-result">
 									<tr>
 										<td>Cart Sub Total</td>
-										<td>1000$</td>
+										<td>2350$</td>
 									</tr>
 									<tr>
 										<td>Exo Tax</td>
@@ -279,7 +350,7 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>1020$</span></td>
+										<td><span>2370$</span></td>
 									</tr>
 								</table>
 							</td>
@@ -299,10 +370,8 @@
 					</span>
 				</div>
 		</div>
-	</section> <!--/#cart_items-->
-
+	</section>
 	
-
 	<footer id="footer"><!--Footer-->
 		<div class="footer-bottom">
 			<div class="container">
@@ -316,11 +385,10 @@
 	</footer><!--/Footer-->
 	
 
-
+  
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+	
 </body>
 </html>
