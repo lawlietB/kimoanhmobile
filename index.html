@@ -19,6 +19,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<link rel="canonical" href="http://www.alessioatzeni.com/wp-content/tutorials/jquery/login-box-modal-dialog-window/index.html" />
 </head>
 
 <body>
@@ -67,7 +68,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#login-box" ><i class="fa fa-user"></i> Login</a></li>
+								<li><a href="#login-box" class="login-window"><i class="fa fa-user"></i> Login</a></li>
 								<li><a href="signup.html"><i class="fa fa-lock"></i> Sign up</a></li>
 								<li><a href="checkout.html"><i class="fa fa-check"></i> Checkout</a></li>
 								<li><a href="about-us.html"><i class="fa fa-group"></i> About us</a></li>
@@ -76,29 +77,24 @@
 						</div>
 					</div>
 				<!-- ------------------------------------------------------- -->
-						 <div id="login-box" class="login-popup">
-        <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-          <form method="post" class="signin" action="#">
-                <fieldset class="textbox">
-            	<label class="username">
-                <span>Username or email</span>
-                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
-                </label>
-                
-                <label class="password">
-                <span>Password</span>
-                <input id="password" name="password" value="" type="password" placeholder="Password">
-                </label>
-                
-                <button class="submit button" type="button">Sign in</button>
-                
-                <p>
-                <a class="forgot" href="#">Forgot your password?</a>
-                </p>
-                
-                </fieldset>
-          </form>
-		</div>
+						<div id="login-box" class="login-popup">
+  <form method="post" class="signin" action="#">
+        <fieldset class="textbox">
+        <label class="username">
+        <span>Username or email</span>
+        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+        </label>
+        <label class="password">
+        <span>Password</span>
+        <input id="password" name="password" value="" type="password" placeholder="Password">
+        </label>
+        <button class="submit button" type="button">Sign in</button>
+        <p>
+        <a class="forgot" href="#">Forgot your password?</a>
+        </p>        
+        </fieldset>
+  </form>
+</div>
 					<!-- -------------------------------------------------------- -->
 				</div>
 			</div>
@@ -482,5 +478,37 @@
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+	<script>
+	$(document).ready(function() {
+$('a.login-window').click(function() {
+    
+    var loginBox = $(this).attr('href');
+
+    $(loginBox).fadeIn(300);
+
+    var popMargTop = ($(loginBox).height() + 24) / 2; 
+    var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    
+    $(loginBox).css({ 
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
+    });
+    
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    
+    return false;
+});
+
+
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .login-popup').fadeOut(300 , function() {
+    $('#mask').remove();  
+}); 
+return false;
+});
+});
+</script>
 </body>
 </html>
