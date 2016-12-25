@@ -3057,25 +3057,25 @@ ul.sub-menu{
 
 #mask {
     display: none;
-    background: #000;
+    background: #FE9836;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 10;
     width: 100%;
     height: 100%;
-    opacity: 0.8;
+    opacity: 0.2;
     z-index: 999;
 }
 
 /* You can customize to your needs  */
 .login-popup {
     display: none;
-    background: #333;
+    background: #FE9836;
     padding: 10px;
     border: 2px solid #ddd;
     float: left;
-    font-size: 1.2em;
+    font-size: 1.5em;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -3113,13 +3113,13 @@ form.signin .textbox span {
 }
 
 form.signin p, form.signin span {
-    color: #999;
-    font-size: 11px;
-    line-height: 18px;
+    color: #0;
+    font-size: 13px;
+    line-height: 20px;
 }
 
 form.signin .textbox input {
-    background: #666666;
+    background: #ffffff;
     border-bottom: 1px solid #333;
     border-left: 1px solid #000;
     border-right: 1px solid #333;
@@ -3134,12 +3134,12 @@ form.signin .textbox input {
 }
 
 form.signin input:-moz-placeholder {
-    color: #bbb;
+    color: #0;
     text-shadow: 0 0 2px #000;
 }
 
 form.signin input::-webkit-input-placeholder {
-    color: #bbb;
+    color: #0;
     text-shadow: 0 0 2px #000;
 }
 
