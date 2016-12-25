@@ -2437,7 +2437,7 @@ h2.title {
 
 #contact-page 
 .form-control::-moz-placeholder {
-  color: #8D8D8D;
+  color: #0;
 }
 
 #contact-page .form-control {
@@ -3075,7 +3075,7 @@ ul.sub-menu{
     padding: 10px;
     border: 2px solid #ddd;
     float: left;
-    font-size: 1.5em;
+    font-size: 1.2em;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -3119,18 +3119,18 @@ form.signin p, form.signin span {
 }
 
 form.signin .textbox input {
-    background: #ffffff;
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #000;
-    border-right: 1px solid #333;
-    border-top: 1px solid #000;
-    color: #fff;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
+   background:#888888; 
+	border-bottom:1px solid #333;
+	border-left:1px solid #000;
+	border-right:1px solid #333;
+	border-top:1px solid #000;
+	color:#fff; 
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    font: 13px Arial, Helvetica, sans-serif;
-    padding: 6px 6px 4px;
-    width: 200px;
+	font:13px Arial, Helvetica, sans-serif;
+	padding:6px 6px 4px;
+	width:200px;
 }
 
 form.signin input:-moz-placeholder {
