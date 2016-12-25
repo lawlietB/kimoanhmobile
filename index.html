@@ -67,7 +67,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
+								<li><a href="#login-box" ><i class="fa fa-user"></i> Login</a></li>
 								<li><a href="signup.html"><i class="fa fa-lock"></i> Sign up</a></li>
 								<li><a href="checkout.html"><i class="fa fa-check"></i> Checkout</a></li>
 								<li><a href="about-us.html"><i class="fa fa-group"></i> About us</a></li>
@@ -75,6 +75,31 @@
 							</ul>
 						</div>
 					</div>
+				<!-- ------------------------------------------------------- -->
+						 <div id="login-box" class="login-popup">
+        <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+          <form method="post" class="signin" action="#">
+                <fieldset class="textbox">
+            	<label class="username">
+                <span>Username or email</span>
+                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                </label>
+                
+                <label class="password">
+                <span>Password</span>
+                <input id="password" name="password" value="" type="password" placeholder="Password">
+                </label>
+                
+                <button class="submit button" type="button">Sign in</button>
+                
+                <p>
+                <a class="forgot" href="#">Forgot your password?</a>
+                </p>
+                
+                </fieldset>
+          </form>
+		</div>
+					<!-- -------------------------------------------------------- -->
 				</div>
 			</div>
 		</div>

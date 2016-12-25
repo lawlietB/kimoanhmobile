@@ -30,33 +30,34 @@ $(document).ready(function(){
 });
 
 	//login
-	$(document).ready(function(){
-		$("#login").click(function(){
-		var email = $("#email").val();
-		var password = $("#password").val();
+	$(document).ready(function() {
+	$('a.login-window').click(function() {
 		
-		if( email =='' || password ==''){
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
-				alert("Please fill all fields...!!!!!!");
-		}else {
-			$.post("login.php",{ email1: email, password1:password},
-		function(data) {
-			if(data=='Invalid Email.......') {
-				$('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-				$('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
-				alert(data);
-			}else if(data=='Email or Password is wrong...!!!!'){
-				$('input[type="text"],input[type="password"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-				alert(data);
-			} else if(data=='Successfully Logged in...'){
-				$("form")[0].reset();
-				$('input[type="text"],input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
-				alert(data);
-			} else{
-				alert(data);
-			}
+
+		var loginBox = $(this).attr('href');
+
+		$(loginBox).fadeIn(300);
+		
+		var popMargTop = ($(loginBox).height() + 24) / 2; 
+		var popMargLeft = ($(loginBox).width() + 24) / 2; 
+		
+		$(loginBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
 		});
-		}
-		});
+		
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>');
+		$('#mask').fadeIn(300);
+		
+		return false;
 	});
+	
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+});
