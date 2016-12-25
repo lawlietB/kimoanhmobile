@@ -11,15 +11,45 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/phonePhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
+
 	<link href="css/style.css" rel="stylesheet">
-	   
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-	<link rel="canonical" href="http://www.alessioatzeni.com/wp-content/tutorials/jquery/login-box-modal-dialog-window/index.html" />
+	
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
+	$('a.login-window').click(function() {
+		
+		// Getting the variable's value from a link 
+		var loginBox = $(this).attr('href');
+
+		//Fade in the Popup and add close button
+		$(loginBox).fadeIn(300);
+		
+		//Set the center alignment padding + border
+		var popMargTop = ($(loginBox).height() + 24) / 2; 
+		var popMargLeft = ($(loginBox).width() + 24) / 2; 
+		
+		$(loginBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>');
+		$('#mask').fadeIn(300);
+		
+		return false;
+	});
+	
+	$('a.close, #mask').on('click', function() { 
+	  $('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+});
+</script>
+	
 </head>
 
 <body>
@@ -37,9 +67,12 @@
 						</div>
 					</div>
 					<div class="col-sm-4" >
+						<form>
 						<div class="search_box">
 							<input style="background-color:white;" type="text" placeholder="Search"/>
+							<button class="btn btn-danger" type="submit"><b class="fa fa-search"></b></button>
 						</div>
+						</form>
 					</div>
 					<div class="col-sm-4" >
 						<div class="social-icons pull-right">
@@ -69,7 +102,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#login-box" class="login-window"><i class="fa fa-user"></i> Login</a></li>
-								<li><a href="signup.html"><i class="fa fa-lock"></i> Sign up</a></li>
+								<li><a href="#signup-box" class="login-window"><i class="fa fa-lock"></i> Sign up</a></li>
 								<li><a href="checkout.html"><i class="fa fa-check"></i> Checkout</a></li>
 								<li><a href="about-us.html"><i class="fa fa-group"></i> About us</a></li>
 								<li><a href="contact-us.html"><i class="fa fa-phone"></i> Contact</a></li>
@@ -77,24 +110,59 @@
 						</div>
 					</div>
 				<!-- ------------------------------------------------------- -->
-						<div id="login-box" class="login-popup">
-  <form method="post" class="signin" action="#">
-        <fieldset class="textbox">
-        <label class="username">
-        <span>Username or email</span>
-        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
-        </label>
-        <label class="password">
-        <span>Password</span>
-        <input id="password" name="password" value="" type="password" placeholder="Password">
-        </label>
-        <button class="btn btn-danger" type="submit">Sign in</button>
-        <p>
-        <a class="forgot" href="#">Forgot your password?</a>
-        </p>        
-        </fieldset>
-  </form>
-</div>
+					<div id="login-box" class="login-popup">
+						<a href="#" class="close"><img src="images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+						<form method="post" class="signin" action="#">
+							<fieldset class="textbox">
+								<label class="username">
+									<span>Username or email</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+                
+								<label class="password">
+									<span>Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+                
+								<button class="btn btn-danger" type="submit">Sign in</button>
+								<p>You don't have account.<a href="#signup-box" class="login-window">Sign up here</p>
+								<p><a class="forgot" href="#">Forgot your password?</a></p>
+                
+							</fieldset>
+						</form>
+					</div>
+					<!-- -------------------------------------------------------- -->
+					
+					<div id="signup-box" class="login-popup">
+						<a href="#" class="close"><img src="images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+						<form method="post" class="signin" action="#">
+							<fieldset class="textbox">
+								<label class="username">
+									<span>Username</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+								
+								<label class="username">
+									<span>Email</span>
+									<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+								</label>
+                
+								<label class="password">
+									<span>Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+								
+								<label class="password">
+									<span>Re-Password</span>
+									<input id="password" name="password" value="" type="password" placeholder="Password">
+								</label>
+                
+								<button class="btn btn-danger" type="submit">Sign up</button>
+                							               
+							</fieldset>
+						</form>
+					</div>
+					
 					<!-- -------------------------------------------------------- -->
 				</div>
 			</div>
@@ -478,42 +546,6 @@
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
-	<script type="text/javascript">
-$(document).ready(function() {
-	$('a.login-window').click(function() {
-		
-		// Getting the variable's value from a link 
-		var loginBox = $(this).attr('href');
-
-		//Fade in the Popup and add close button
-		$(loginBox).fadeIn(300);
-		
-		//Set the center alignment padding + border
-		var popMargTop = ($(loginBox).height() + 24) / 2; 
-		var popMargLeft = ($(loginBox).width() + 24) / 2; 
-		
-		$(loginBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-		
-		// Add the mask to body
-		$('body').append('<div id="mask"></div>');
-		$('#mask').fadeIn(300);
-		
-		return false;
-	});
 	
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').on('click', function() { 
-	  $('#mask , .login-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-	 
-});
-</script>
 </body>
 </html>
